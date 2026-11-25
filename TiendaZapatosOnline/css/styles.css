@@ -1,0 +1,615 @@
+/* ====================================================
+   ZapaShop - Estilos personalizados
+   Proyecto UDES - Curso de Bootstrap
+   ==================================================== */
+
+:root {
+  --color-primario: #1a1a2e;
+  --color-secundario: #16213e;
+  --color-acento: #ffc107;
+  --color-acento-oscuro: #e0a800;
+  --color-exito: #198754;
+  --color-peligro: #dc3545;
+  --sombra-suave: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --sombra-media: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --sombra-fuerte: 0 16px 40px rgba(0, 0, 0, 0.18);
+  --radio-card: 16px;
+  --transicion: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: #f8f9fa;
+  color: #1f2937;
+}
+
+/* ---------- Navbar ---------- */
+#mainNav {
+  background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-secundario) 100%);
+  backdrop-filter: blur(10px);
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+.nav-link {
+  position: relative;
+  transition: color var(--transicion);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-acento);
+  transition: all var(--transicion);
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 60%;
+}
+
+/* ---------- Logos ---------- */
+.logo-navbar {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo-footer {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo-factura {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: 90vh;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(26, 26, 46, 0.92) 0%, rgba(22, 33, 62, 0.85) 100%),
+    url('https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=1600&q=80')
+      center / cover no-repeat;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 193, 7, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.hero .container { position: relative; z-index: 1; }
+
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero-stat {
+  padding: 0.5rem;
+  border-left: 3px solid var(--color-acento);
+  padding-left: 1rem;
+}
+
+.hero-img-wrapper {
+  position: relative;
+  animation: flotar 6s ease-in-out infinite;
+}
+
+.hero-img {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.5));
+  transform: rotate(-15deg);
+}
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* ---------- Barra de marcas ---------- */
+.marcas-bar { box-shadow: var(--sombra-suave); }
+
+.marca-logo {
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: #6c757d;
+  letter-spacing: 1px;
+  opacity: 0.6;
+  transition: all var(--transicion);
+  text-transform: uppercase;
+}
+
+.marca-logo:hover {
+  opacity: 1;
+  color: var(--color-primario);
+  transform: scale(1.1);
+}
+
+/* ---------- Buscador ---------- */
+.input-group .form-control,
+.input-group .input-group-text {
+  padding: 0.75rem 1rem;
+  border-radius: 50px !important;
+}
+
+.input-group .input-group-text {
+  border-radius: 50px 0 0 50px !important;
+  border-right: none;
+}
+
+.input-group .form-control {
+  border-radius: 0 50px 50px 0 !important;
+  box-shadow: var(--sombra-suave);
+}
+
+.input-group .form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+  border-color: var(--color-acento);
+}
+
+/* ---------- Filtros ---------- */
+.filtro-btn {
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px !important;
+  font-weight: 500;
+  transition: all var(--transicion);
+}
+
+.filtro-btn.active {
+  background: var(--color-primario) !important;
+  color: #fff !important;
+  border-color: var(--color-primario) !important;
+  box-shadow: 0 4px 12px rgba(26, 26, 46, 0.3);
+}
+
+/* ---------- Tarjetas de producto ---------- */
+.card-producto {
+  border: none;
+  border-radius: var(--radio-card);
+  overflow: hidden;
+  transition: all var(--transicion);
+  box-shadow: var(--sombra-suave);
+  cursor: pointer;
+  background: #fff;
+}
+
+.card-producto:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--sombra-fuerte);
+}
+
+.card-producto .img-wrapper {
+  height: 240px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  position: relative;
+  perspective: 900px;
+}
+
+/* Contenedor interno que rota en 3D al pasar el mouse */
+.card-producto .img-tilt-card {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.card-producto .img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.15));
+}
+
+/* Botón vista rápida en hover */
+.btn-vista-rapida {
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--color-primario);
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  box-shadow: var(--sombra-media);
+  transition: bottom 0.35s ease;
+  white-space: nowrap;
+}
+
+.card-producto:hover .btn-vista-rapida { bottom: 15px; }
+
+/* Badges flotantes */
+.badge-producto {
+  position: absolute;
+  top: 12px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 4px;
+  z-index: 2;
+  letter-spacing: 0.5px;
+}
+
+.badge-nuevo {
+  left: 12px;
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.4);
+}
+
+.badge-oferta {
+  right: 12px;
+  background: linear-gradient(135deg, #dc3545, #e83e8c);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.4);
+}
+
+.card-producto .card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-primario);
+  margin-bottom: 0.25rem;
+}
+
+.precio {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--color-exito);
+}
+
+.precio-anterior {
+  text-decoration: line-through;
+  color: #adb5bd;
+}
+
+.badge-categoria {
+  text-transform: capitalize;
+  font-size: 0.7rem;
+  padding: 4px 10px;
+  border-radius: 50px;
+}
+
+/* Sistema de estrellas */
+.rating {
+  color: var(--color-acento);
+  font-size: 0.85rem;
+}
+
+.rating i { margin-right: 1px; }
+
+/* ---------- Modal detalle ---------- */
+#modalDetalle .modal-content {
+  border-radius: var(--radio-card);
+  border: none;
+  overflow: hidden;
+}
+
+.detalle-img-wrapper {
+  position: relative;
+  border-radius: var(--radio-card);
+  overflow: hidden;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  aspect-ratio: 1;
+  perspective: 1200px;
+  cursor: grab;
+}
+
+/* Contenedor interno que rota en 3D siguiendo el mouse */
+.img-tilt {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.detalle-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  /* Sombra que da sensación de profundidad cuando rota */
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.25));
+}
+
+/* Brillo radial que sigue al mouse para efecto premium */
+.detalle-img-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0) 40%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 3;
+  mix-blend-mode: overlay;
+}
+
+.detalle-img-wrapper:hover::after { opacity: 1; }
+
+/* Indicador "Mueve el mouse para ver en 3D" */
+.hint-3d {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 5px 12px;
+  border-radius: 50px;
+  white-space: nowrap;
+  z-index: 4;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+  transition: opacity 0.3s ease;
+}
+
+.detalle-img-wrapper:hover .hint-3d { opacity: 0; }
+
+/* Overlay para teñir la imagen según el color seleccionado */
+.color-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease, background-color 0.35s ease;
+  border-radius: var(--radio-card);
+}
+
+/* Selector de tallas */
+.btn-talla {
+  min-width: 48px;
+  height: 48px;
+  border: 2px solid #dee2e6;
+  background: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  color: var(--color-primario);
+  cursor: pointer;
+  transition: all var(--transicion);
+}
+
+.btn-talla:hover {
+  border-color: var(--color-primario);
+}
+
+.btn-talla.activa {
+  background: var(--color-primario);
+  color: #fff;
+  border-color: var(--color-primario);
+  transform: scale(1.05);
+}
+
+/* Selector de colores */
+.btn-color {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 2px #dee2e6;
+  cursor: pointer;
+  position: relative;
+  transition: all var(--transicion);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  font-size: 1.1rem;
+}
+
+.btn-color:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 2px var(--color-primario);
+}
+
+.btn-color.activa {
+  box-shadow: 0 0 0 3px var(--color-acento);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* Para colores claros, mostrar el check en oscuro */
+.btn-color[style*="#f8f9fa"].activa,
+.btn-color[style*="#ffc107"].activa,
+.btn-color[style*="#d2b48c"].activa {
+  color: var(--color-primario);
+}
+
+/* Swatch mini para el carrito */
+.swatch-mini {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  vertical-align: middle;
+}
+
+/* ---------- Sección Nosotros ---------- */
+.seccion-nosotros {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.card-feature {
+  background: #fff;
+  border-radius: var(--radio-card);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  height: 100%;
+  box-shadow: var(--sombra-suave);
+  transition: all var(--transicion);
+}
+
+.card-feature:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--sombra-media);
+}
+
+.card-feature .icon-wrapper {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1rem;
+  background: linear-gradient(135deg, var(--color-acento) 0%, var(--color-acento-oscuro) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  color: var(--color-primario);
+  box-shadow: 0 8px 20px rgba(255, 193, 7, 0.4);
+}
+
+/* ---------- Items del carrito ---------- */
+.item-carrito {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.item-carrito img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.carrito-vacio {
+  text-align: center;
+  color: #adb5bd;
+  padding: 2.5rem 0;
+}
+
+/* ---------- Offcanvas ---------- */
+.offcanvas {
+  width: 420px !important;
+}
+
+@media (max-width: 576px) {
+  .offcanvas { width: 100% !important; }
+}
+
+/* ---------- Factura ---------- */
+.factura-header {
+  border-bottom: 3px solid var(--color-primario);
+}
+
+#seccionFactura table {
+  font-size: 0.92rem;
+}
+
+/* ---------- Botones generales ---------- */
+.btn {
+  transition: all var(--transicion);
+  font-weight: 600;
+}
+
+.btn-warning {
+  background: linear-gradient(135deg, var(--color-acento) 0%, var(--color-acento-oscuro) 100%);
+  border: none;
+  color: var(--color-primario);
+}
+
+.btn-warning:hover {
+  background: linear-gradient(135deg, var(--color-acento-oscuro) 0%, var(--color-acento) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 193, 7, 0.4);
+  color: var(--color-primario);
+}
+
+/* ---------- Animaciones de entrada ---------- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.card-producto { animation: fadeInUp 0.5s ease backwards; }
+#contenedorProductos > div:nth-child(1) .card-producto { animation-delay: 0.05s; }
+#contenedorProductos > div:nth-child(2) .card-producto { animation-delay: 0.1s; }
+#contenedorProductos > div:nth-child(3) .card-producto { animation-delay: 0.15s; }
+#contenedorProductos > div:nth-child(4) .card-producto { animation-delay: 0.2s; }
+#contenedorProductos > div:nth-child(5) .card-producto { animation-delay: 0.25s; }
+#contenedorProductos > div:nth-child(6) .card-producto { animation-delay: 0.3s; }
+#contenedorProductos > div:nth-child(7) .card-producto { animation-delay: 0.35s; }
+#contenedorProductos > div:nth-child(8) .card-producto { animation-delay: 0.4s; }
+
+/* ---------- Impresión: solo se imprime la factura ---------- */
+@media print {
+  body * { visibility: hidden; }
+
+  #seccionFactura,
+  #seccionFactura * { visibility: visible; }
+
+  #seccionFactura {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  #modalFactura,
+  #modalFactura .modal-dialog,
+  #modalFactura .modal-content,
+  #modalFactura .modal-body {
+    display: block !important;
+    position: static !important;
+    opacity: 1 !important;
+    transform: none !important;
+    overflow: visible !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .modal-backdrop,
+  #modalFactura .modal-header,
+  #modalFactura .modal-footer { display: none !important; }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
